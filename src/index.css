@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 220 100% 50%;
+    --primary-light: 220 100% 60%;
+    --primary-dark: 220 100% 40%;
+    --accent: 340 100% 50%;
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --error: 0 91% 71%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  .dark {
+    --primary: 217 91% 60%;
+    --primary-light: 217 91% 70%;
+    --primary-dark: 217 91% 50%;
+    --accent: 340 100% 60%;
+    --success: 142 76% 45%;
+    --warning: 38 92% 60%;
+    --error: 0 91% 71%;
+    --background: 224 71% 4%;
+    --foreground: 210 20% 98%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold leading-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-3 rounded-full text-sm font-semibold transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-light shadow-lg hover:shadow-xl hover:shadow-primary/20;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white;
+  }
+
+  .section-container {
+    @apply container mx-auto px-4 md:px-8 py-16 md:py-24;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-4 relative;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl mb-12 max-w-2xl;
+  }
+
+  .card {
+    @apply rounded-2xl transition-all duration-300 overflow-hidden;
+  }
+
+  .gradient-text {
+    @apply text-primary;
+  }
+
+  .glass {
+    @apply bg-white shadow-lg dark:bg-black/20 border border-primary/10;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-delayed {
+  animation: float 6s ease-in-out 2s infinite;
+}
+
+.floating-item-1 {
+  animation: float 8s ease-in-out infinite;
+}
+
+.floating-item-2 {
+  animation: float 9s ease-in-out 1s infinite;
+}
+
+.floating-item-3 {
+  animation: float 7s ease-in-out 0.5s infinite;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 85, 254, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 85, 254, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 85, 254, 0); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-4 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-5 {
+  animation-delay: 0.5s;
+}
+
+.timeline-item.active {
+  opacity: 1;
+  transform: translateX(0);
+}
