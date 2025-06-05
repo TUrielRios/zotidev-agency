@@ -1,19 +1,20 @@
 import React from 'react';
-import { Github, Twitter, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
+import { Instagram, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
+import logowhite from '../assets/1.png';
+import logoblack from '../assets/3.png';
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
+  const { theme } = useTheme();
   
   const footerLinks = [
     {
       titleKey: 'footer.company.title',
       links: [
-        { nameKey: 'footer.company.about', href: '#' },
-        { nameKey: 'footer.company.team', href: '#' },
-        { nameKey: 'footer.company.careers', href: '#' },
-        { nameKey: 'footer.company.news', href: '#' },
-        { nameKey: 'footer.company.contact', href: '#contact' },
+        { nameKey: 'footer.company.team', href: '#technologies' },
+        { nameKey: 'footer.company.careers', href: '#process' },
       ],
     },
     {
@@ -23,7 +24,6 @@ const Footer: React.FC = () => {
         { nameKey: 'footer.services.mobile', href: '#services' },
         { nameKey: 'footer.services.enterprise', href: '#services' },
         { nameKey: 'footer.services.ai', href: '#services' },
-        { nameKey: 'footer.services.blockchain', href: '#services' },
       ],
     },
     {
@@ -48,10 +48,10 @@ const Footer: React.FC = () => {
   ];
   
   const socialLinks = [
-    { name: 'GitHub', icon: <Github className="h-5 w-5" />, href: '#' },
-    { name: 'Twitter', icon: <Twitter className="h-5 w-5" />, href: '#' },
-    { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, href: '#' },
-    { name: 'Instagram', icon: <Instagram className="h-5 w-5" />, href: '#' },
+    // { name: 'GitHub', icon: <Github className="h-5 w-5" />, href: '' },
+    // { name: 'Twitter', icon: <Twitter className="h-5 w-5" />, href: '#' },
+    // { name: 'LinkedIn', icon: <Linkedin className="h-5 w-5" />, href: '#' },
+    { name: 'Instagram', icon: <Instagram className="h-5 w-5" />, href: 'https://www.instagram.com/zotidev/' },
   ];
   
   return (
@@ -61,10 +61,11 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <div className="mb-6">
               <a href="#" className="inline-block">
-                <span className="text-3xl font-bold tracking-tight text-primary">
-                  <span className="font-['Orbitron']">ZOTI</span>
-                  <span className="text-foreground">dev</span>
-                </span>
+                <img 
+                  src={theme === 'dark' ? logowhite : logoblack} 
+                  alt="Logo"
+                  className="h-40 w-auto transition-opacity duration-300"
+                />
               </a>
             </div>
             

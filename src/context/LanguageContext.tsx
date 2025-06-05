@@ -100,29 +100,29 @@ const translations = {
     
     // Portfolio Categories
     'portfolio.categories.all': 'Todos los Proyectos',
-    'portfolio.categories.web': 'Aplicaciones Web',
+    'portfolio.categories.web': 'Web',
     'portfolio.categories.mobile': 'Apps Móviles',
     'portfolio.categories.enterprise': 'Empresarial',
     'portfolio.categories.ai': 'IA y ML',
     
     // Portfolio Projects
-    'portfolio.project1.title': 'Dashboard Fintech',
-    'portfolio.project1.description': 'Un dashboard integral de análisis financiero con visualización de datos en tiempo real para clientes empresariales.',
-    
-    'portfolio.project2.title': 'App Móvil E-commerce',
-    'portfolio.project2.description': 'Aplicación móvil de e-commerce con funciones avanzadas, visualización AR de productos y procesamiento seguro de pagos.',
-    
-    'portfolio.project3.title': 'Plataforma de Cadena de Suministro',
-    'portfolio.project3.description': 'Plataforma de gestión de cadena de suministro basada en blockchain para rastrear autenticidad y procedencia de productos.',
-    
-    'portfolio.project4.title': 'Generador de Contenido IA',
-    'portfolio.project4.description': 'Herramienta avanzada de creación de contenido impulsada por IA para equipos de marketing con soporte multiidioma.',
-    
-    'portfolio.project5.title': 'Sistema de Monitoreo de Salud',
-    'portfolio.project5.description': 'Aplicación móvil de monitoreo de salud conectada a IoT para pacientes con condiciones crónicas.',
-    
-    'portfolio.project6.title': 'Plataforma Inmobiliaria',
-    'portfolio.project6.description': 'Marketplace inmobiliario con tours virtuales y recomendaciones de propiedades impulsadas por IA.',
+'portfolio.project1.title': 'Web App de Estudio de Arquitectura',
+'portfolio.project1.description': 'Diseño y desarrollo de una plataforma web para un estudio de arquitectura, mostrando proyectos destacados, servicios ofrecidos y contacto profesional. Cuenta con panel de administrador personalizado para gestión de contenidos.',
+
+'portfolio.project2.title': 'App Móvil de Recetas',
+'portfolio.project2.description': 'Aplicación móvil intuitiva que permite a los usuarios explorar, guardar y compartir recetas, con funciones como filtros por ingredientes y temporizadores integrados.',
+
+'portfolio.project3.title': 'Plataforma de Análisis Empresarial',
+'portfolio.project3.description': 'Herramienta web para análisis de datos empresariales, que incluye dashboards personalizados y generación de informes automáticos.',
+
+'portfolio.project4.title': 'Página Web de Escritor',
+'portfolio.project4.description': 'Sitio web personal para un escritor, destacando su portafolio literario, blog personal y una tienda en línea para venta de libros.',
+
+'portfolio.project5.title': 'Aplicación Móvil de Coctelería',
+'portfolio.project5.description': 'App móvil interactiva que ofrece recetas de cócteles, consejos de mixología y una sección de favoritos para los amantes de la coctelería.',
+
+'portfolio.project6.title': 'Página Web de Estudio Jurídico',
+'portfolio.project6.description': 'Página profesional para un estudio jurídico, con secciones detalladas de áreas de práctica, perfiles de abogados y un formulario de consulta en línea.',
 
     // Technologies
     'technologies.title': 'Stack',
@@ -203,8 +203,8 @@ const translations = {
     // Footer - Company
     'footer.company.title': 'Empresa',
     'footer.company.about': 'Acerca de Nosotros',
-    'footer.company.team': 'Nuestro Equipo',
-    'footer.company.careers': 'Carreras',
+    'footer.company.team': 'Nuestro Stack',
+    'footer.company.careers': 'Nuestro Proceso',
     'footer.company.news': 'Noticias',
     'footer.company.contact': 'Contacto',
     
@@ -320,7 +320,7 @@ const translations = {
     
     // Portfolio Categories
     'portfolio.categories.all': 'All Projects',
-    'portfolio.categories.web': 'Web Apps',
+    'portfolio.categories.web': 'Web',
     'portfolio.categories.mobile': 'Mobile Apps',
     'portfolio.categories.enterprise': 'Enterprise',
     'portfolio.categories.ai': 'AI & ML',
@@ -424,8 +424,8 @@ const translations = {
     // Footer - Company
     'footer.company.title': 'Company',
     'footer.company.about': 'About Us',
-    'footer.company.team': 'Our Team',
-    'footer.company.careers': 'Careers',
+    'footer.company.team': 'Our Stack',
+    'footer.company.careers': 'Our Process',
     'footer.company.news': 'News',
     'footer.company.contact': 'Contact',
     

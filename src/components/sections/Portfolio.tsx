@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
+import lacocina from '../../assets/lacocina-admin.png';
+import defrancisco from '../../assets/defrancisco.png';
+import pacta from '../../assets/pacta.png';
+import martinvirasoro from '../../assets/martinvirasoro.png';
+import robochef from '../../assets/robochef.png';
+import cocteler from '../../assets/cocteler.png';
+
 
 interface Project {
   id: number;
@@ -20,49 +27,49 @@ const Portfolio: React.FC = () => {
       id: 1,
       titleKey: "portfolio.project1.title",
       category: "web",
-      image: "https://images.pexels.com/photos/7821485/pexels-photo-7821485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: defrancisco,
       descriptionKey: "portfolio.project1.description",
-      technologies: ["React", "TypeScript", "Node.js", "D3.js", "WebSockets"]
+      technologies: ["React", "TypeScript", "Node.js", "Express.js", "PostgreSQL"]
     },
     {
       id: 2,
       titleKey: "portfolio.project2.title",
       category: "mobile",
-      image: "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: robochef,
       descriptionKey: "portfolio.project2.description",
-      technologies: ["Flutter", "Firebase", "Stripe", "ARKit", "ARCore"]
+      technologies: ["React Native", "Expo", "Typescript", "Android", "IOS"]
     },
     {
       id: 3,
       titleKey: "portfolio.project3.title",
       category: "enterprise",
-      image: "https://images.pexels.com/photos/1427541/pexels-photo-1427541.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: lacocina,
       descriptionKey: "portfolio.project3.description",
-      technologies: ["Ethereum", "Solidity", "React", "Node.js", "AWS"]
+      technologies: ["Next.js", "Typescript", "Node.js", "Express.js", "PostgreSQL"]
     },
     {
       id: 4,
       titleKey: "portfolio.project4.title",
-      category: "ai",
-      image: "https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      category: "web",
+      image: martinvirasoro,
       descriptionKey: "portfolio.project4.description",
-      technologies: ["Python", "TensorFlow", "GPT-3", "Next.js", "MongoDB"]
+      technologies: ["Wordpress", "Elementor", "HTML", "CSS", "JavaScript"]
     },
     {
       id: 5,
       titleKey: "portfolio.project5.title",
       category: "mobile",
-      image: "https://images.pexels.com/photos/4033148/pexels-photo-4033148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      image: cocteler,
       descriptionKey: "portfolio.project5.description",
-      technologies: ["React Native", "GraphQL", "IoT", "AWS", "Machine Learning"]
+      technologies: ["React Native", "Expo", "Typescript", "Android", "IOS"]
     },
     {
       id: 6,
       titleKey: "portfolio.project6.title",
       category: "web",
-      image: "https://res-console.cloudinary.com/dhiss395i/media_explorer_thumbnails/84e3e25e51bb7ace68b6776efec0441a/detailed",
+      image: pacta,
       descriptionKey: "portfolio.project6.description",
-      technologies: ["Vue.js", "Three.js", "Node.js", "PostgreSQL", "AWS"]
+      technologies: ["Next.js", "Typescript", "Tailwind"]
     }
   ];
   
@@ -71,7 +78,6 @@ const Portfolio: React.FC = () => {
     { id: 'web', nameKey: 'portfolio.categories.web' },
     { id: 'mobile', nameKey: 'portfolio.categories.mobile' },
     { id: 'enterprise', nameKey: 'portfolio.categories.enterprise' },
-    { id: 'ai', nameKey: 'portfolio.categories.ai' }
   ];
   
   const filteredProjects = filter === 'all' 
