@@ -28,8 +28,8 @@ const translations = {
     // Hero
     'hero.badge': 'Desarrollo de Software de Próxima Generación',
     'hero.title.part1': 'Construimos',
-    'hero.title.highlight': 'Soluciones Digitales',
-    'hero.title.part2': 'Para los Desafíos del Mañana',
+    'hero.title.highlight': 'soluciones digitales',
+    'hero.title.part2': 'para los desafíos del mañana',
     'hero.description': 'Creando experiencias digitales excepcionales a través de tecnologías de vanguardia y diseño innovador. Transformamos ideas complejas en soluciones de software elegantes y preparadas para el futuro.',
     'hero.startProject': 'Inicia Tu Proyecto',
     'hero.exploreWork': 'Explora Nuestro Trabajo',
