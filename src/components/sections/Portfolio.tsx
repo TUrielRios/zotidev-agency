@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '../../context/LanguageContext';
 import lacocina from '../../assets/lacocina-admin.png';
 import defrancisco from '../../assets/defrancisco.png';
@@ -8,7 +9,6 @@ import martinvirasoro from '../../assets/martinvirasoro.png';
 import robochef from '../../assets/robochef.png';
 import cocteler from '../../assets/cocteler.png';
 
-
 interface Project {
   id: number;
   titleKey: string;
@@ -16,10 +16,12 @@ interface Project {
   image: string;
   descriptionKey: string;
   technologies: string[];
+  externalUrl?: string;
 }
 
 const Portfolio: React.FC = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
   const [filter, setFilter] = useState<string>('all');
   
   const projects: Project[] = [
@@ -29,7 +31,8 @@ const Portfolio: React.FC = () => {
       category: "web",
       image: defrancisco,
       descriptionKey: "portfolio.project1.description",
-      technologies: ["React", "TypeScript", "Node.js", "Express.js", "PostgreSQL"]
+      technologies: ["React", "TypeScript", "Node.js", "Express.js", "PostgreSQL"],
+      externalUrl: "https://defrancisco.com.ar"
     },
     {
       id: 2,
@@ -83,6 +86,17 @@ const Portfolio: React.FC = () => {
   const filteredProjects = filter === 'all' 
     ? projects 
     : projects.filter(project => project.category === filter);
+
+  // Función para navegar al detalle del proyecto usando el ID
+  const handleProjectClick = (projectId: number) => {
+    navigate(`/project/${projectId}`);
+  };
+
+  // Función para abrir proyecto externo
+  const handleExternalLink = (url: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
   
   return (
     <section id="portfolio" className="py-24">
@@ -116,7 +130,8 @@ const Portfolio: React.FC = () => {
           {filteredProjects.map(project => (
             <div 
               key={project.id}
-              className="group card bg-background overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group card bg-background overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+              onClick={() => handleProjectClick(project.id)}
             >
               <div className="relative overflow-hidden aspect-video">
                 <img 
@@ -125,10 +140,24 @@ const Portfolio: React.FC = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-6">
-                    <a href="#" className="text-white hover:text-primary transition-colors flex items-center gap-2 text-sm font-medium">
-                      {t('portfolio.viewProject')} <ExternalLink className="h-4 w-4" />
-                    </a>
+                  <div className="p-6 flex gap-4">
+                    <button 
+                      className="text-white hover:text-primary transition-colors flex items-center gap-2 text-sm font-medium"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleProjectClick(project.id);
+                      }}
+                    >
+                      {t('portfolio.viewDetails')} <ExternalLink className="h-4 w-4" />
+                    </button>
+                    {project.externalUrl && (
+                      <button 
+                        className="text-white hover:text-primary transition-colors flex items-center gap-2 text-sm font-medium"
+                        onClick={(e) => handleExternalLink(project.externalUrl!, e)}
+                      >
+                        {t('portfolio.viewLive')} <ExternalLink className="h-4 w-4" />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

@@ -79,15 +79,16 @@ const Hero: React.FC = () => {
           <div className="relative hidden lg:block">
             <div className="relative w-full aspect-square">
               {/* 3D Abstract Shape */}
+               {/* 3D Abstract Shape */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative w-4/5 aspect-square">
-                  <div className="absolute top-0 left-0 w-full h-full rounded-2xl bg-gradient-to-br from-primary to-accent rotate-6 opacity-20 blur-sm"></div>
-                  <div className="absolute top-0 left-0 w-full h-full rounded-2xl bg-gradient-to-tr from-primary via-accent to-primary rotate-12 opacity-40 shadow-lg"></div>
-                  <div className="absolute top-0 left-0 w-full h-full rounded-2xl bg-gradient-to-r from-primary to-accent rotate-6 opacity-80 shadow-xl backdrop-blur-md"></div>
+                  <div className="absolute top-0 left-0 w-full h-full rounded-2xl bg-primary/20 rotate-6 blur-sm"></div>
+                  <div className="absolute top-0 left-0 w-full h-full rounded-2xl bg-primary/40 rotate-12 shadow-lg"></div>
+                  <div className="absolute top-0 left-0 w-full h-full rounded-2xl bg-primary/80 rotate-6 shadow-xl backdrop-blur-md"></div>
                   
                   <div className="absolute top-[10%] left-[10%] w-[20%] h-[20%] rounded-full bg-white/50 floating-item-1"></div>
-                  <div className="absolute bottom-[15%] right-[15%] w-[15%] h-[15%] rounded-full bg-accent/50 floating-item-2"></div>
-                  <div className="absolute bottom-[30%] left-[25%] w-[10%] h-[10%] rounded-md bg-success/40 floating-item-3"></div>
+                  <div className="absolute bottom-[15%] right-[15%] w-[15%] h-[15%] rounded-full bg-white/50 floating-item-2"></div>
+                  <div className="absolute bottom-[30%] left-[25%] w-[10%] h-[10%] rounded-md bg-white/40 floating-item-3"></div>
                 </div>
               </div>
             </div>
