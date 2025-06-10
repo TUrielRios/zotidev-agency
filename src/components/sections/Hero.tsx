@@ -28,6 +28,7 @@ const Hero: React.FC = () => {
     window.location.href = mailtoUrl;
   };
 
+  // Efecto parallax simplificado
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!heroRef.current) return
@@ -41,12 +42,12 @@ const Hero: React.FC = () => {
       const centerX = rect.width / 2
       const centerY = rect.height / 2
 
-      const moveX = (x - centerX) / 30
-      const moveY = (y - centerY) / 30
+      const moveX = (x - centerX) / 50 // Reducido de 30 a 50 para movimiento más sutil
+      const moveY = (y - centerY) / 50
 
       const orbs = heroRef.current.querySelectorAll(".orb")
       orbs.forEach((orb, index) => {
-        const speed = index === 0 ? 0.5 : index === 1 ? 0.75 : 1
+        const speed = 0.3 + (index * 0.1) // Velocidades más consistentes y lentas
         const el = orb as HTMLElement
         el.style.transform = `translate(${moveX * speed}px, ${moveY * speed}px)`
       })
@@ -65,71 +66,77 @@ const Hero: React.FC = () => {
       className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden"
       ref={heroRef}
     >
-      {/* Background Elements */}
+      {/* Background Elements - Simplificados */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
           className="orb absolute top-[10%] right-[10%] w-[25vw] h-[25vw] rounded-full bg-gradient-to-br from-primary/30 to-accent/20 blur-[60px] opacity-70"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.7 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         ></motion.div>
         <motion.div
           className="orb absolute bottom-[10%] left-[10%] w-[20vw] h-[20vw] rounded-full bg-gradient-to-tr from-primary/20 to-success/20 blur-[80px] opacity-60"
-          initial={{ scale: 0, rotate: 180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 0.7 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.6 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
         ></motion.div>
         <motion.div
           className="orb absolute top-[30%] left-[20%] w-[15vw] h-[15vw] rounded-full bg-gradient-to-bl from-accent/10 to-warning/10 blur-[50px] opacity-50"
-          initial={{ scale: 0, rotate: -90 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 2, ease: "easeOut", delay: 0.9 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.5 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
         ></motion.div>
       </div>
 
       <div className="container mx-auto px-4 md:px-8 z-10 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left lg:pr-8">
+            {/* Badge */}
             <motion.div
               className="inline-block mb-4 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium"
-              initial={{ opacity: 0, y: -50 }}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              transition={{ duration: 0.5 }}
             >
               {t("hero.badge")}
             </motion.div>
 
+            {/* Título */}
             <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
-              initial={{ opacity: 0, x: -100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
               {t("hero.title.part1")} <span className="gradient-text">{t("hero.title.highlight")}</span>{" "}
               {t("hero.title.part2")}
             </motion.h1>
 
+            {/* Descripción */}
             <motion.p
               className="text-base md:text-lg opacity-80 mb-8 max-w-2xl mx-auto lg:mx-0"
-              initial={{ opacity: 0, x: -80 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               {t("hero.description")}
             </motion.p>
 
+            {/* Botones */}
             <motion.div
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
             >
               <motion.button
                 onClick={handleEmailContact}
                 className="btn btn-primary"
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
+                }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 300 }}
               >
                 {t("hero.startProject")} <ArrowRight className="ml-2 h-4 w-4" />
               </motion.button>
@@ -137,67 +144,98 @@ const Hero: React.FC = () => {
               <motion.a
                 href="#portfolio"
                 className="btn btn-outline"
-                whileHover={{ scale: 1.05, borderColor: "currentColor" }}
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
+                }}
                 whileTap={{ scale: 0.95 }}
-                transition={{ type: "spring", stiffness: 300 }}
               >
                 {t("hero.exploreWork")}
               </motion.a>
             </motion.div>
           </div>
 
+          {/* Elemento visual simplificado */}
           <motion.div
             className="relative hidden lg:block"
-            initial={{ opacity: 0, x: 100, rotateY: -90 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut", delay: 0.8 }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="relative w-full aspect-square">
-              {/* 3D Abstract Shape */}
-              {/* 3D Abstract Shape */}
+              {/* Forma 3D simplificada */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="relative w-4/5 aspect-square">
+                  {/* Capas de fondo con animaciones suaves */}
                   <motion.div
                     className="absolute top-0 left-0 w-full h-full rounded-2xl bg-primary/20 rotate-6 blur-sm"
-                    animate={{ rotate: [6, 12, 6] }}
-                    transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                    animate={{ rotate: [6, 10, 6] }}
+                    transition={{ 
+                      duration: 8, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      repeatType: "reverse"
+                    }}
                   ></motion.div>
                   <motion.div
                     className="absolute top-0 left-0 w-full h-full rounded-2xl bg-primary/40 rotate-12 shadow-lg"
-                    animate={{ rotate: [12, 18, 12] }}
-                    transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                    animate={{ rotate: [12, 16, 12] }}
+                    transition={{ 
+                      duration: 10, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      repeatType: "reverse"
+                    }}
                   ></motion.div>
                   <motion.div
                     className="absolute top-0 left-0 w-full h-full rounded-2xl bg-primary/80 rotate-6 shadow-xl backdrop-blur-md"
-                    animate={{ rotate: [6, -6, 6] }}
-                    transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                    animate={{ rotate: [6, 2, 6] }}
+                    transition={{ 
+                      duration: 12, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      repeatType: "reverse"
+                    }}
                   ></motion.div>
 
+                  {/* Elementos flotantes simplificados */}
                   <motion.div
-                    className="absolute top-[10%] left-[10%] w-[20%] h-[20%] rounded-full bg-white/50 floating-item-1"
+                    className="absolute top-[10%] left-[10%] w-[20%] h-[20%] rounded-full bg-white/50"
                     animate={{
-                      y: [-10, 10, -10],
-                      x: [-5, 5, -5],
-                      scale: [1, 1.1, 1],
+                      y: [-5, 5, -5],
+                      scale: [1, 1.05, 1],
                     }}
-                    transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                    transition={{ 
+                      duration: 6, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      repeatType: "reverse"
+                    }}
                   ></motion.div>
                   <motion.div
-                    className="absolute bottom-[15%] right-[15%] w-[15%] h-[15%] rounded-full bg-white/50 floating-item-2"
+                    className="absolute bottom-[15%] right-[15%] w-[15%] h-[15%] rounded-full bg-white/50"
                     animate={{
-                      y: [10, -10, 10],
-                      x: [5, -5, 5],
-                      scale: [1, 0.9, 1],
+                      y: [5, -5, 5],
+                      scale: [1, 0.95, 1],
                     }}
-                    transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.5 }}
+                    transition={{ 
+                      duration: 8, 
+                      repeat: Infinity, 
+                      ease: "easeInOut",
+                      repeatType: "reverse",
+                      delay: 1
+                    }}
                   ></motion.div>
                   <motion.div
-                    className="absolute bottom-[30%] left-[25%] w-[10%] h-[10%] rounded-md bg-white/40 floating-item-3"
+                    className="absolute bottom-[30%] left-[25%] w-[10%] h-[10%] rounded-md bg-white/40"
                     animate={{
-                      rotate: [0, 360],
-                      scale: [1, 1.2, 1],
+                      rotate: [0, 180, 360],
                     }}
-                    transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+                    transition={{ 
+                      duration: 15, 
+                      repeat: Infinity, 
+                      ease: "linear"
+                    }}
                   ></motion.div>
                 </div>
               </div>

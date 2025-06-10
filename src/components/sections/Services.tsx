@@ -17,6 +17,7 @@ interface Service {
 const Services: React.FC = () => {
   const [activeService, setActiveService] = useState<number | null>(null)
   const { t } = useLanguage()
+  console.log(activeService)
 
   const services: Service[] = [
     {
@@ -99,63 +100,21 @@ const Services: React.FC = () => {
     },
   ]
 
-  const handleServiceHover = (index: number) => {
-    setActiveService(index)
-  }
-
-  const handleServiceLeave = () => {
-    setActiveService(null)
-  }
-
-  // // Variantes de animación para las tarjetas
-  // const cardVariants = {
-  //   hidden: { opacity: 0, y: 50, rotateX: -15 },
-  //   visible: (index: number) => ({
-  //     opacity: 1,
-  //     y: 0,
-  //     rotateX: 0,
-  //     transition: {
-  //       delay: index * 0.1,
-  //       duration: 0.6,
-  //       ease: "easeOut",
-  //     },
-  //   }),
-  // }
-
-  // Variantes para animaciones desde diferentes direcciones
-  const getDirectionVariant = (index: number) => {
-    const directions = [
-      { x: -100, y: 0 }, // izquierda
-      { x: 0, y: -100 }, // arriba
-      { x: 100, y: 0 }, // derecha
-      { x: -100, y: 0 }, // izquierda
-      { x: 0, y: 100 }, // abajo
-      { x: 100, y: 0 }, // derecha
-    ]
-
-    return {
-      hidden: {
-        opacity: 0,
-        x: directions[index].x,
-        y: directions[index].y,
-        scale: 0.8,
-        rotateY: index % 2 === 0 ? -30 : 30,
+  // Animación simple para las tarjetas
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30 
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: index * 0.1,
+        duration: 0.4,
+        ease: "easeOut",
       },
-      visible: {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        scale: 1,
-        rotateY: 0,
-        transition: {
-          delay: index * 0.15,
-          duration: 0.8,
-          ease: "easeOut",
-          type: "spring",
-          stiffness: 100,
-        },
-      },
-    }
+    }),
   }
 
   return (
@@ -164,19 +123,19 @@ const Services: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.h2
             className="section-title"
-            initial={{ opacity: 0, y: -50 }}
+            initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.5 }}
           >
             {t("services.title")} <span className="gradient-text">{t("services.titleHighlight")}</span>
           </motion.h2>
           <motion.p
             className="section-subtitle"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             {t("services.subtitle")}
           </motion.p>
@@ -186,82 +145,61 @@ const Services: React.FC = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className={`card p-8 h-full bg-background hover:shadow-xl transition-all duration-300 ${
-                activeService === index ? "scale-105 shadow-2xl" : ""
-              }`}
-              variants={getDirectionVariant(index)}
+              className="card p-8 h-full bg-background hover:shadow-xl transition-all duration-300"
+              variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
+              custom={index}
+              viewport={{ once: true, margin: "-50px" }}
               whileHover={{
-                scale: 1.05,
-                rotateY: 5,
-                boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
-                transition: { duration: 0.3 },
+                y: -5,
+                transition: { duration: 0.2 },
               }}
-              whileTap={{ scale: 0.98 }}
-              onMouseEnter={() => handleServiceHover(index)}
-              onMouseLeave={handleServiceLeave}
+              onMouseEnter={() => setActiveService(index)}
+              onMouseLeave={() => setActiveService(null)}
             >
+              {/* Icono con animación simple */}
               <motion.div
                 className={`w-16 h-16 rounded-2xl mb-6 flex items-center justify-center bg-gradient-to-br ${service.color} text-white`}
                 whileHover={{
-                  rotate: 360,
-                  scale: 1.1,
+                  scale: 1.05,
+                  transition: { duration: 0.2 }
                 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
               >
                 {service.icon}
               </motion.div>
 
-              <motion.h3
-                className="text-xl font-bold mb-4"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: index * 0.1 + 0.3 }}
-              >
+              {/* Título */}
+              <h3 className="text-xl font-bold mb-4">
                 {t(service.titleKey)}
-              </motion.h3>
+              </h3>
 
-              <motion.p
-                className="mb-6 opacity-80"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 0.8 }}
-                transition={{ delay: index * 0.1 + 0.4 }}
-              >
+              {/* Descripción */}
+              <p className="mb-6 opacity-80">
                 {t(service.descriptionKey)}
-              </motion.p>
+              </p>
 
-              <motion.ul
-                className="space-y-2"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ delay: index * 0.1 + 0.5 }}
-              >
+              {/* Lista de características */}
+              <ul className="space-y-2">
                 {service.featureKeys.map((featureKey, fIndex) => (
                   <motion.li
                     key={fIndex}
                     className="flex items-center text-sm"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
                     transition={{
-                      delay: index * 0.1 + 0.6 + fIndex * 0.1,
-                      duration: 0.4,
+                      delay: index * 0.1 + fIndex * 0.05,
+                      duration: 0.3,
                     }}
                   >
-                    <motion.span
+                    <span
                       className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.color} mr-2`}
-                      animate={{ scale: [1, 1.2, 1] }}
-                      transition={{
-                        duration: 2,
-                        repeat: Number.POSITIVE_INFINITY,
-                        delay: fIndex * 0.2,
-                      }}
-                    ></motion.span>
+                    />
                     {t(featureKey)}
                   </motion.li>
                 ))}
-              </motion.ul>
+              </ul>
             </motion.div>
           ))}
         </div>

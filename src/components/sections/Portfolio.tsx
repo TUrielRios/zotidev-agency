@@ -94,49 +94,30 @@ const Portfolio: React.FC = () => {
     navigate(`/${projectId}`)
   }
 
-  // Variantes de animación para las tarjetas del portfolio
-  const getProjectVariant = (index: number) => {
-    const directions = [
-      { x: -200, y: -100, rotate: -15 }, // izquierda-arriba
-      { x: 0, y: -200, rotate: 0 }, // arriba
-      { x: 200, y: -100, rotate: 15 }, // derecha-arriba
-      { x: -200, y: 100, rotate: 15 }, // izquierda-abajo
-      { x: 0, y: 200, rotate: 0 }, // abajo
-      { x: 200, y: 100, rotate: -15 }, // derecha-abajo
-    ]
-
-    const direction = directions[index % directions.length]
-
-    return {
-      hidden: {
-        opacity: 0,
-        x: direction.x,
-        y: direction.y,
-        rotate: direction.rotate,
-        scale: 0.6,
+  // Animación simple para las tarjetas del portfolio
+  const projectVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.9
+    },
+    visible: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        delay: index * 0.1,
+        duration: 0.4,
+        ease: "easeOut",
       },
-      visible: {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        rotate: 0,
-        scale: 1,
-        transition: {
-          type: "spring",
-          stiffness: 100,
-          damping: 15,
-          delay: index * 0.1,
-        },
+    }),
+    exit: {
+      opacity: 0,
+      scale: 0.9,
+      transition: {
+        duration: 0.2,
       },
-      exit: {
-        opacity: 0,
-        scale: 0.8,
-        y: -50,
-        transition: {
-          duration: 0.3,
-        },
-      },
-    }
+    },
   }
 
   return (
@@ -145,52 +126,51 @@ const Portfolio: React.FC = () => {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <motion.h2
             className="section-title"
-            initial={{ opacity: 0, y: -50 }}
+            initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.5 }}
           >
             {t("portfolio.title")} <span className="gradient-text">{t("portfolio.titleHighlight")}</span>
           </motion.h2>
           <motion.p
             className="section-subtitle"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
           >
             {t("portfolio.subtitle")}
           </motion.p>
         </div>
 
+        {/* Filtros */}
         <motion.div
           className="flex flex-wrap justify-center gap-4 mb-12"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
         >
           {categories.map((category, index) => (
             <motion.button
               key={category.id}
               onClick={() => setFilter(category.id)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                 filter === category.id
                   ? "bg-primary text-white shadow-md shadow-primary/20"
                   : "bg-secondary hover:bg-secondary-dark"
               }`}
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{
-                delay: index * 0.1 + 0.5,
-                type: "spring",
-                stiffness: 200,
+                delay: index * 0.05 + 0.3,
+                duration: 0.3,
               }}
               whileHover={{
                 scale: 1.05,
-                y: -2,
-                boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                transition: { duration: 0.2 }
               }}
               whileTap={{ scale: 0.95 }}
             >
@@ -199,106 +179,74 @@ const Portfolio: React.FC = () => {
           ))}
         </motion.div>
 
+        {/* Grid de proyectos */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="wait">
             {filteredProjects.map((project, index) => (
               <motion.div
                 key={`${filter}-${project.id}`}
                 className="group card bg-background overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
-                variants={getProjectVariant(index)}
+                variants={projectVariants}
                 initial="hidden"
                 animate="visible"
                 exit="exit"
+                custom={index}
                 layout
                 whileHover={{
-                  y: -10,
-                  scale: 1.02,
-                  rotateY: 5,
-                  boxShadow: "0 25px 50px rgba(0,0,0,0.15)",
+                  y: -5,
+                  transition: { duration: 0.2 },
                 }}
-                whileTap={{ scale: 0.98 }}
                 onClick={() => handleProjectClick(project.id)}
               >
+                {/* Imagen del proyecto */}
                 <div className="relative overflow-hidden aspect-video">
-                  <motion.img
+                  <img
                     src={project.image}
                     alt={t(project.titleKey)}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    initial={{ scale: 1.2, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: index * 0.1 + 0.3, duration: 0.6 }}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  >
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                     <div className="p-6 flex gap-4">
-                      <motion.button
+                      <button
                         className="text-white hover:text-primary transition-colors flex items-center gap-2 text-sm font-medium"
                         onClick={(e) => {
                           e.stopPropagation()
                           handleProjectClick(project.id)
                         }}
-                        whileHover={{ scale: 1.1, x: 5 }}
-                        whileTap={{ scale: 0.9 }}
                       >
                         {t("portfolio.viewDetails")} <ExternalLink className="h-4 w-4" />
-                      </motion.button>
+                      </button>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
 
-                <motion.div
-                  className="p-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 + 0.4 }}
-                >
-                  <motion.h3
-                    className="text-xl font-bold mb-2"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 + 0.5 }}
-                  >
+                {/* Contenido del proyecto */}
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2">
                     {t(project.titleKey)}
-                  </motion.h3>
-                  <motion.p
-                    className="mb-4 text-sm opacity-80"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 0.8, x: 0 }}
-                    transition={{ delay: index * 0.1 + 0.6 }}
-                  >
+                  </h3>
+                  <p className="mb-4 text-sm opacity-80">
                     {t(project.descriptionKey)}
-                  </motion.p>
+                  </p>
 
-                  <motion.div
-                    className="flex flex-wrap gap-2"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: index * 0.1 + 0.7 }}
-                  >
+                  {/* Tecnologías */}
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, techIndex) => (
                       <motion.span
                         key={techIndex}
-                        className="text-xs px-3 py-1 rounded-full bg-secondary"
-                        initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        className="text-xs px-3 py-1 rounded-full bg-secondary hover:bg-secondary-dark transition-colors duration-200"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         transition={{
-                          delay: index * 0.1 + 0.8 + techIndex * 0.05,
-                          type: "spring",
-                          stiffness: 200,
-                        }}
-                        whileHover={{
-                          scale: 1.1,
-                          backgroundColor: "rgba(var(--primary), 0.1)",
+                          delay: index * 0.1 + techIndex * 0.03,
+                          duration: 0.3,
                         }}
                       >
                         {tech}
                       </motion.span>
                     ))}
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </AnimatePresence>
