@@ -9,8 +9,25 @@ interface Step {
 }
 
 const Process: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const timelineRef = useRef<HTMLDivElement>(null);
+
+  const CONTACT_EMAIL = 'zotidevelopment@gmail.com'; // Reemplaza con tu email real
+
+    // Función para abrir el cliente de correo
+  const handleEmailContact = () => {
+    // Textos según el idioma seleccionado
+    const emailSubject = language === 'es' 
+      ? 'Nuevo proyecto - Consulta desde el sitio web' 
+      : 'New project - Inquiry from website';
+    
+    const emailBody = language === 'es'
+      ? 'Hola, estoy interesado en iniciar un nuevo proyecto. Me gustaría obtener más información sobre sus servicios y discutir mis necesidades.'
+      : 'Hello, I am interested in starting a new project. I would like to get more information about your services and discuss my needs.';
+    
+    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoUrl;
+  };
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -131,7 +148,8 @@ const Process: React.FC = () => {
           <p className="max-w-2xl mx-auto mb-8 opacity-80">
             {t('process.cta.description')}
           </p>
-          <a href="#contact" className="btn btn-primary">
+          <a                 onClick={handleEmailContact}
+ className="btn btn-primary">
             {t('process.cta.button')}
           </a>
         </div>

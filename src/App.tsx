@@ -47,7 +47,7 @@ function App() {
                 />
 
                 {/* Página individual para cada proyecto */}
-                <Route path="/project/:projectId" element={<ProjectDetail />} />
+                <Route path="/:projectId" element={<ProjectDetail />} />
               </Routes>
               <Footer />
             </div>

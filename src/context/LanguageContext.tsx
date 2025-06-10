@@ -97,6 +97,7 @@ const translations = {
     'portfolio.titleHighlight': 'Portafolio',
     'portfolio.subtitle': 'Explora nuestros últimos proyectos y descubre cómo hemos ayudado a empresas de diversas industrias a alcanzar sus objetivos digitales.',
     'portfolio.viewProject': 'Ver Proyecto',
+    'portfolio.viewDetails': 'Ver Detalles',
     
     // Portfolio Categories
     'portfolio.categories.all': 'Todos los Proyectos',
@@ -196,7 +197,7 @@ const translations = {
     'process.cta.button': 'Comenzar',
 
     // Portfolio Detail Pages
-    'portfolio.backToProjects': 'Volver al Portafolio',
+    'portfolio.backToProjects': 'Volver al Inicio',
     'portfolio.overview': 'Descripción General',
     'portfolio.challenge': 'Desafío',
     'portfolio.solution': 'Solución',
@@ -221,7 +222,7 @@ const translations = {
     
     'portfolio.project2.challenge': 'Los usuarios necesitaban una forma inteligente de encontrar recetas basadas en lo que tenían en su refrigerador, sin tener que buscar manualmente.',
     'portfolio.project2.solution': 'Desarrollamos una app con reconocimiento de ingredientes mediante IA, sistema de recomendación personalizado y funciones interactivas de cocina.',
-    'portfolio.project2.results': 'Más de 50,000 descargas en 3 meses, calificación promedio de 4.8 estrellas y reconocimiento como "App destacada" en las tiendas de aplicaciones.',
+    'portfolio.project2.results': 'Más de 5.000 recetas, con integración IA incluída. Permite a los usuarios cocinar de manera más eficiente y disfrutar de una experiencia culinaria personalizada.',
     'portfolio.project2.client': 'Startup de Tecnología Alimentaria',
     'portfolio.project2.feature1': 'Búsqueda por ingredientes disponibles',
     'portfolio.project2.feature2': 'Temporizadores inteligentes para cada paso',
@@ -251,7 +252,7 @@ const translations = {
 
     'portfolio.project5.challenge': 'Los entusiastas de los cócteles necesitaban una app que fuera más allá de simples recetas, ofreciendo guías prácticas y personalización.',
     'portfolio.project5.solution': 'Creamos una aplicación con realidad aumentada para visualizar preparaciones, sistema de inventario y comunidad para compartir creaciones.',
-    'portfolio.project5.results': '100,000+ usuarios activos mensuales, comunidad creciente de mixólogos y premio a "Mejor App de Estilo de Vida".',
+    'portfolio.project5.results': 'Usuarios activos mensuales y una comunidad creciente de mixólogos.',
     'portfolio.project5.client': 'Empresa de Entretenimiento Gastronómico',
     'portfolio.project5.feature1': 'Base de datos con 500+ recetas de cócteles',
     'portfolio.project5.feature2': 'Tutoriales en video paso a paso',
@@ -319,9 +320,9 @@ const translations = {
     
     // Hero
     'hero.badge': 'Next-Generation Software Development',
-    'hero.title.part1': 'We Build',
-    'hero.title.highlight': 'Digital Solutions',
-    'hero.title.part2': 'For Tomorrow\'s Challenges',
+    'hero.title.part1': 'We build',
+    'hero.title.highlight': 'digital solutions',
+    'hero.title.part2': 'for tomorrow\'s Challenges',
     'hero.description': 'Crafting exceptional digital experiences through cutting-edge technologies and innovative design. We transform complex ideas into elegant, future-proof software solutions.',
     'hero.startProject': 'Start Your Project',
     'hero.exploreWork': 'Explore Our Work',
@@ -390,6 +391,7 @@ const translations = {
     'portfolio.titleHighlight': 'Portfolio',
     'portfolio.subtitle': 'Explore our latest projects and discover how we\'ve helped businesses across industries achieve their digital goals.',
     'portfolio.viewProject': 'View Project',
+    'portfolio.viewDetails': 'View Details',
     
     // Portfolio Categories
     'portfolio.categories.all': 'All Projects',
@@ -491,7 +493,7 @@ const translations = {
 
 
     // Portfolio Detail Pages
-'portfolio.backToProjects': 'Back to Portfolio',
+'portfolio.backToProjects': 'Back to Home',
 'portfolio.overview': 'Overview',
 'portfolio.challenge': 'Challenge',
 'portfolio.solution': 'Solution',
@@ -515,7 +517,7 @@ const translations = {
 
 'portfolio.project2.challenge': 'Users needed a smart way to find recipes based on what they had in their fridge, without having to search manually.',
 'portfolio.project2.solution': 'We developed an app with AI-powered ingredient recognition, personalized recommendation system, and interactive cooking features.',
-'portfolio.project2.results': 'Over 50,000 downloads in 3 months, average rating of 4.8 stars, and featured as "App of the Day" in app stores.',
+'portfolio.project2.results': 'Over 5.000 recipes, including AI integration. It allows users to cook more efficiently and enjoy a personalized culinary experience.',
 'portfolio.project2.client': 'Food Tech Startup',
 'portfolio.project2.feature1': 'Search by available ingredients',
 'portfolio.project2.feature2': 'Smart timers for each cooking step',
@@ -545,7 +547,7 @@ const translations = {
 
 'portfolio.project5.challenge': 'Cocktail lovers needed an app that went beyond simple recipes, offering practical guides and personalization.',
 'portfolio.project5.solution': 'We created an app with augmented reality for preparation visualization, inventory system, and community for sharing creations.',
-'portfolio.project5.results': '100,000+ monthly active users, growing community of mixologists, and "Best Lifestyle App" award.',
+'portfolio.project5.results': 'Monthly active users and a growing community of mixologists.',
 'portfolio.project5.client': 'Gastronomic Entertainment Company',
 'portfolio.project5.feature1': 'Database with 500+ cocktail recipes',
 'portfolio.project5.feature2': 'Step-by-step video tutorials',

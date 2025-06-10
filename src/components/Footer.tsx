@@ -26,25 +26,25 @@ const Footer: React.FC = () => {
         { nameKey: 'footer.services.ai', href: '#services' },
       ],
     },
-    {
-      titleKey: 'footer.resources.title',
-      links: [
-        { nameKey: 'footer.resources.blog', href: '#' },
-        { nameKey: 'footer.resources.cases', href: '#portfolio' },
-        { nameKey: 'footer.resources.whitepapers', href: '#' },
-        { nameKey: 'footer.resources.technologies', href: '#technologies' },
-        { nameKey: 'footer.resources.faq', href: '#' },
-      ],
-    },
-    {
-      titleKey: 'footer.legal.title',
-      links: [
-        { nameKey: 'footer.legal.privacy', href: '#' },
-        { nameKey: 'footer.legal.terms', href: '#' },
-        { nameKey: 'footer.legal.cookies', href: '#' },
-        { nameKey: 'footer.legal.gdpr', href: '#' },
-      ],
-    },
+    // {
+    //   titleKey: 'footer.resources.title',
+    //   links: [
+    //     { nameKey: 'footer.resources.blog', href: '#' },
+    //     { nameKey: 'footer.resources.cases', href: '#portfolio' },
+    //     { nameKey: 'footer.resources.whitepapers', href: '#' },
+    //     { nameKey: 'footer.resources.technologies', href: '#technologies' },
+    //     { nameKey: 'footer.resources.faq', href: '#' },
+    //   ],
+    // },
+    // {
+    //   titleKey: 'footer.legal.title',
+    //   links: [
+    //     { nameKey: 'footer.legal.privacy', href: '#' },
+    //     { nameKey: 'footer.legal.terms', href: '#' },
+    //     { nameKey: 'footer.legal.cookies', href: '#' },
+    //     { nameKey: 'footer.legal.gdpr', href: '#' },
+    //   ],
+    // },
   ];
   
   const socialLinks = [

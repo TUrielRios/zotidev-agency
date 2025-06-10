@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun, Globe } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 import logowhite from '../assets/1.png';
@@ -11,6 +12,14 @@ const Navbar: React.FC = () => {
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Email de contacto - cambia esto por tu email real
+  const CONTACT_EMAIL = 'zotidevelopment@gmail.com'; // Reemplaza con tu email real
+
+  // Verificar si estamos en la página principal
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +49,42 @@ const Navbar: React.FC = () => {
     setIsLanguageMenuOpen(false);
   };
 
+  // Función para manejar la navegación
+  const handleNavigation = (href: string) => {
+    if (isHomePage) {
+      // Si estamos en home, usar scroll normal
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Si estamos en otra página, navegar al home con la sección
+      navigate(`/${href}`, { replace: true });
+    }
+    setIsMenuOpen(false);
+  };
+
+  // Función para navegar al home
+  const handleHomeNavigation = () => {
+    navigate('/', { replace: true });
+  };
+
+  // Función para abrir el cliente de correo
+  const handleEmailContact = () => {
+    // Textos según el idioma seleccionado
+    const emailSubject = language === 'es' 
+      ? 'Consulta desde el sitio web' 
+      : 'Inquiry from website';
+    
+    const emailBody = language === 'es'
+      ? 'Hola, me gustaría obtener más información sobre sus servicios.'
+      : 'Hello, I would like to get more information about your services.';
+    
+    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = mailtoUrl;
+    setIsMenuOpen(false);
+  };
+
   const navLinks = [
     { name: t('nav.home'), href: '#hero' },
     { name: t('nav.services'), href: '#services' },
@@ -58,13 +103,13 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 md:px-8">
         <nav className="flex items-center justify-between py-4">
           <div className="flex items-center">
-            <a href="#" className="flex items-center">
+            <button onClick={handleHomeNavigation} className="flex items-center">
               <img 
                 src={theme === 'dark' ? logowhite : logoblack} 
                 alt="Logo"
                 className="h-40 w-auto transition-opacity duration-300 -my-8"
               />
-            </a>
+            </button>
           </div>
 
           {/* Desktop Navigation */}
@@ -72,12 +117,12 @@ const Navbar: React.FC = () => {
             <ul className="flex space-x-8">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a 
-                    href={link.href} 
+                  <button 
+                    onClick={() => handleNavigation(link.href)}
                     className="text-sm font-medium transition-colors hover:text-primary"
                   >
                     {link.name}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -123,12 +168,12 @@ const Navbar: React.FC = () => {
               {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
             </button>
             
-            <a 
-              href="#contact" 
+            <button 
+              onClick={handleEmailContact}
               className="btn btn-primary"
             >
               {t('nav.getInTouch')}
-            </a>
+            </button>
           </div>
 
           {/* Mobile Navigation Toggle */}
@@ -195,23 +240,21 @@ const Navbar: React.FC = () => {
           <ul className="flex flex-col space-y-4 pb-6">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <a 
-                  href={link.href} 
-                  className="block py-2 text-base font-medium transition-colors hover:text-primary"
-                  onClick={() => setIsMenuOpen(false)}
+                <button 
+                  onClick={() => handleNavigation(link.href)}
+                  className="block py-2 text-base font-medium transition-colors hover:text-primary w-full text-left"
                 >
                   {link.name}
-                </a>
+                </button>
               </li>
             ))}
             <li>
-              <a 
-                href="#contact" 
+              <button 
+                onClick={handleEmailContact}
                 className="btn btn-primary w-full flex justify-center"
-                onClick={() => setIsMenuOpen(false)}
               >
                 {t('nav.getInTouch')}
-              </a>
+              </button>
             </li>
           </ul>
         </div>
