@@ -51,6 +51,12 @@ const Navbar: React.FC = () => {
 
   // Función para manejar la navegación
   const handleNavigation = (href: string) => {
+    // Si es el enlace de contacto, abrir el cliente de correo
+    if (href === '#contact') {
+      handleEmailContact();
+      return;
+    }
+
     if (isHomePage) {
       // Si estamos en home, usar scroll normal
       const element = document.querySelector(href);
