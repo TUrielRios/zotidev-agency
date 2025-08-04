@@ -18,7 +18,10 @@ import defrancisco6 from "../assets/carrusel-defrancisco/6.png"
 import defrancisco7 from "../assets/carrusel-defrancisco/7.png"
 import pacta from "../assets/pacta.png"
 import martinvirasoro from "../assets/martinvirasoro.png"
-import martinvirasorometidoenlaptop from "../assets/martin-virasoro-metido-en-laptop.png"
+import virasoro2 from "../assets/virasoro2.png"
+import virasoro3 from "../assets/virasoro3.png"
+import virasoro4 from "../assets/virasoro4.png"
+import virasoro5 from "../assets/virasoro5.png"
 import robochef from "../assets/robochef.png"
 import cocteler from "../assets/cocteler.png"
 
@@ -238,7 +241,10 @@ const ProjectDetail: React.FC = () => {
       category: "web",
       images: [
         { url: martinvirasoro, caption: "Página Web de Escritor" },
-        { url: martinvirasorometidoenlaptop, caption: "Página Web de Escritor" },
+        { url: virasoro2, caption: "Página Web de Escritor" },
+        { url: virasoro3, caption: "Página Web de Escritor" },
+        { url: virasoro4, caption: "Página Web de Escritor" },
+        { url: virasoro5, caption: "Página Web de Escritor" },
       ],
       descriptionKey: "portfolio.project4.description",
       challengeKey: "portfolio.project4.challenge",
@@ -252,6 +258,8 @@ const ProjectDetail: React.FC = () => {
         t("portfolio.project4.feature4") ,
       ],
       clientKey: "portfolio.project4.client",
+      websiteUrl: "https://martinvirasoro.com",
+
     },
     {
       id: 5,
