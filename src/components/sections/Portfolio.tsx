@@ -3,7 +3,6 @@
 import type React from "react"
 import { useState } from "react"
 import { ExternalLink } from "lucide-react"
-import { useNavigate } from "react-router-dom"
 import { useLanguage } from "../../context/LanguageContext"
 import { motion, AnimatePresence } from "framer-motion"
 import lacocina from "../../assets/lacocina-admin.png"
@@ -12,6 +11,8 @@ import pacta from "../../assets/pacta.png"
 import martinvirasoro from "../../assets/martinvirasoro.png"
 import robochef from "../../assets/robochef.png"
 import cocteler from "../../assets/cocteler.png"
+import reservatusturnos from "../../assets/reservatusturnos.png"
+import eliterent from "../../assets/eliterent.png"
 
 interface Project {
   id: number
@@ -25,7 +26,6 @@ interface Project {
 
 const Portfolio: React.FC = () => {
   const { t } = useLanguage()
-  const navigate = useNavigate()
   const [filter, setFilter] = useState<string>("all")
 
   const projects: Project[] = [
@@ -78,6 +78,24 @@ const Portfolio: React.FC = () => {
       descriptionKey: "portfolio.project6.description",
       technologies: ["Next.js", "Typescript", "Tailwind"],
     },
+    {
+      id: 7,
+      titleKey: "portfolio.project7.title",
+      category: "enterprise",
+      image: reservatusturnos,
+      descriptionKey: "portfolio.project7.description",
+      technologies: ["Next.js", "TypeScript", "Node.js", "Express.js", "PostgreSQL"],
+      externalUrl: "https://www.reservatusturnos.com",
+    },
+    {
+      id: 8,
+      titleKey: "portfolio.project8.title",
+      category: "web",
+      image: eliterent,
+      descriptionKey: "portfolio.project8.description",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      externalUrl: "https://www.eliterentgroup.com",
+    },
   ]
 
   const categories = [
@@ -89,15 +107,15 @@ const Portfolio: React.FC = () => {
 
   const filteredProjects = filter === "all" ? projects : projects.filter((project) => project.category === filter)
 
-  // Función para navegar al detalle del proyecto usando el ID
+  // Función para abrir el detalle del proyecto en una nueva pestaña
   const handleProjectClick = (projectId: number) => {
-    navigate(`/${projectId}`)
+    window.open(`/${projectId}`, '_blank')
   }
 
   // Animación simple para las tarjetas del portfolio
   const projectVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       y: 50,
       scale: 0.9
     },
@@ -156,11 +174,10 @@ const Portfolio: React.FC = () => {
             <motion.button
               key={category.id}
               onClick={() => setFilter(category.id)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                filter === category.id
-                  ? "bg-primary text-white shadow-md shadow-primary/20"
-                  : "bg-secondary hover:bg-secondary-dark"
-              }`}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${filter === category.id
+                ? "bg-primary text-white shadow-md shadow-primary/20"
+                : "bg-secondary hover:bg-secondary-dark"
+                }`}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}

@@ -24,6 +24,11 @@ import virasoro4 from "../assets/virasoro4.png"
 import virasoro5 from "../assets/virasoro5.png"
 import robochef from "../assets/robochef.png"
 import cocteler from "../assets/cocteler.png"
+import reservatusturnos from "../assets/reservatusturnos.png"
+import rsturnos3 from "../assets/rsturnos3.png"
+import rsturnos4 from "../assets/rsturnos4.png"
+import rsturnos5 from "../assets/rsturnos5.png"
+import eliterent from "../assets/eliterent.png"
 
 interface ProjectImage {
   url: string
@@ -68,10 +73,10 @@ const ImageCarousel: React.FC<{ images: ProjectImage[] }> = ({ images }) => {
   if (images.length === 1) {
     return (
       <div className="rounded-xl overflow-hidden shadow-lg max-w-4xl mx-auto">
-        <img 
-          src={images[0].url || "/placeholder.svg"} 
-          alt={images[0].caption} 
-          className="w-full h-90 md:h-96 lg:h-[500px] object-cover" 
+        <img
+          src={images[0].url || "/placeholder.svg"}
+          alt={images[0].caption}
+          className="w-full h-90 md:h-96 lg:h-[500px] object-cover"
         />
         <p className="text-sm text-center p-4 bg-secondary/10">{images[0].caption}</p>
       </div>
@@ -82,12 +87,12 @@ const ImageCarousel: React.FC<{ images: ProjectImage[] }> = ({ images }) => {
     <div className="relative rounded-xl overflow-hidden shadow-lg max-w-6xl mx-auto">
       {/* Imagen principal */}
       <div className="relative">
-        <img 
-          src={images[currentIndex].url || "/placeholder.svg"} 
-          alt={images[currentIndex].caption} 
-          className="w-full h-90 md:h-96 lg:h-[550px] object-cover transition-opacity duration-300" 
+        <img
+          src={images[currentIndex].url || "/placeholder.svg"}
+          alt={images[currentIndex].caption}
+          className="w-full h-90 md:h-96 lg:h-[550px] object-cover transition-opacity duration-300"
         />
-        
+
         {/* Botones de navegación */}
         <button
           onClick={prevImage}
@@ -96,7 +101,7 @@ const ImageCarousel: React.FC<{ images: ProjectImage[] }> = ({ images }) => {
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
-        
+
         <button
           onClick={nextImage}
           className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
@@ -120,11 +125,10 @@ const ImageCarousel: React.FC<{ images: ProjectImage[] }> = ({ images }) => {
           <button
             key={index}
             onClick={() => goToImage(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              index === currentIndex 
-                ? 'bg-white' 
-                : 'bg-white/50 hover:bg-white/70'
-            }`}
+            className={`w-3 h-3 rounded-full transition-colors ${index === currentIndex
+              ? 'bg-white'
+              : 'bg-white/50 hover:bg-white/70'
+              }`}
             aria-label={`Ir a imagen ${index + 1}`}
           />
         ))}
@@ -136,16 +140,15 @@ const ImageCarousel: React.FC<{ images: ProjectImage[] }> = ({ images }) => {
           <button
             key={index}
             onClick={() => goToImage(index)}
-            className={`w-16 h-12 rounded-md overflow-hidden border-2 transition-all ${
-              index === currentIndex 
-                ? 'border-primary shadow-md' 
-                : 'border-transparent hover:border-primary/50'
-            }`}
+            className={`w-16 h-12 rounded-md overflow-hidden border-2 transition-all ${index === currentIndex
+              ? 'border-primary shadow-md'
+              : 'border-transparent hover:border-primary/50'
+              }`}
           >
-            <img 
-              src={image.url || "/placeholder.svg"} 
-              alt={image.caption} 
-              className="w-full h-full object-cover" 
+            <img
+              src={image.url || "/placeholder.svg"}
+              alt={image.caption}
+              className="w-full h-full object-cover"
             />
           </button>
         ))}
@@ -205,10 +208,10 @@ const ProjectDetail: React.FC = () => {
       resultsKey: "portfolio.project2.results",
       technologies: ["React Native", "Expo", "Typescript", "Android", "IOS"],
       features: [
-        t("portfolio.project2.feature1") ,
-        t("portfolio.project2.feature2") ,
-        t("portfolio.project2.feature3") ,
-        t("portfolio.project2.feature4") ,
+        t("portfolio.project2.feature1"),
+        t("portfolio.project2.feature2"),
+        t("portfolio.project2.feature3"),
+        t("portfolio.project2.feature4"),
       ],
       clientKey: "portfolio.project2.client",
     },
@@ -228,10 +231,10 @@ const ProjectDetail: React.FC = () => {
       resultsKey: "portfolio.project3.results",
       technologies: ["Next.js", "Typescript", "Node.js", "Express.js", "PostgreSQL"],
       features: [
-        t("portfolio.project3.feature1") ,
-        t("portfolio.project3.feature2") ,
-        t("portfolio.project3.feature3") ,
-        t("portfolio.project3.feature4") ,
+        t("portfolio.project3.feature1"),
+        t("portfolio.project3.feature2"),
+        t("portfolio.project3.feature3"),
+        t("portfolio.project3.feature4"),
       ],
       clientKey: "portfolio.project3.client",
     },
@@ -252,10 +255,10 @@ const ProjectDetail: React.FC = () => {
       resultsKey: "portfolio.project4.results",
       technologies: ["Wordpress", "Elementor", "HTML", "CSS", "JavaScript"],
       features: [
-        t("portfolio.project4.feature1") ,
-        t("portfolio.project4.feature2") ,
-        t("portfolio.project4.feature3") ,
-        t("portfolio.project4.feature4") ,
+        t("portfolio.project4.feature1"),
+        t("portfolio.project4.feature2"),
+        t("portfolio.project4.feature3"),
+        t("portfolio.project4.feature4"),
       ],
       clientKey: "portfolio.project4.client",
       websiteUrl: "https://martinvirasoro.com",
@@ -272,10 +275,10 @@ const ProjectDetail: React.FC = () => {
       resultsKey: "portfolio.project5.results",
       technologies: ["React Native", "Expo", "Typescript", "Android", "IOS"],
       features: [
-        t("portfolio.project5.feature1") ,
-        t("portfolio.project5.feature2") ,
-        t("portfolio.project5.feature3") ,
-        t("portfolio.project5.feature4") ,
+        t("portfolio.project5.feature1"),
+        t("portfolio.project5.feature2"),
+        t("portfolio.project5.feature3"),
+        t("portfolio.project5.feature4"),
       ],
       clientKey: "portfolio.project5.client",
     },
@@ -290,12 +293,54 @@ const ProjectDetail: React.FC = () => {
       resultsKey: "portfolio.project6.results",
       technologies: ["Next.js", "Typescript", "Tailwind"],
       features: [
-        t("portfolio.project6.feature1") ,
-        t("portfolio.project6.feature2") ,
-        t("portfolio.project6.feature3") ,
-        t("portfolio.project6.feature4") ,
+        t("portfolio.project6.feature1"),
+        t("portfolio.project6.feature2"),
+        t("portfolio.project6.feature3"),
+        t("portfolio.project6.feature4"),
       ],
       clientKey: "portfolio.project6.client",
+    },
+    {
+      id: 7,
+      titleKey: "portfolio.project7.title",
+      category: "enterprise",
+      images: [{ url: reservatusturnos, caption: t("portfolio.project7.image1.caption") },
+      { url: rsturnos3, caption: t("portfolio.project7.image3.caption") },
+      { url: rsturnos4, caption: t("portfolio.project7.image4.caption") },
+      { url: rsturnos5, caption: t("portfolio.project7.image5.caption") },
+      ],
+      descriptionKey: "portfolio.project7.description",
+      challengeKey: "portfolio.project7.challenge",
+      solutionKey: "portfolio.project7.solution",
+      resultsKey: "portfolio.project7.results",
+      technologies: ["Next.js", "TypeScript", "Node.js", "Express.js", "PostgreSQL"],
+      features: [
+        t("portfolio.project7.feature1"),
+        t("portfolio.project7.feature2"),
+        t("portfolio.project7.feature3"),
+        t("portfolio.project7.feature4"),
+      ],
+      clientKey: "portfolio.project7.client",
+      websiteUrl: "https://www.reservatusturnos.com",
+    },
+    {
+      id: 8,
+      titleKey: "portfolio.project8.title",
+      category: "web",
+      images: [{ url: eliterent, caption: t("portfolio.project8.image1.caption") }],
+      descriptionKey: "portfolio.project8.description",
+      challengeKey: "portfolio.project8.challenge",
+      solutionKey: "portfolio.project8.solution",
+      resultsKey: "portfolio.project8.results",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      features: [
+        t("portfolio.project8.feature1"),
+        t("portfolio.project8.feature2"),
+        t("portfolio.project8.feature3"),
+        t("portfolio.project8.feature4"),
+      ],
+      clientKey: "portfolio.project8.client",
+      websiteUrl: "https://www.eliterentgroup.com",
     },
   ]
 
@@ -321,8 +366,8 @@ const ProjectDetail: React.FC = () => {
           <div className="text-center py-16">
             <h1 className="text-3xl font-bold mb-4">Proyecto no encontrado</h1>
             <p className="mb-8">El proyecto que buscas no existe o ha sido removido.</p>
-            <button 
-              onClick={handleBackToPortfolio} 
+            <button
+              onClick={handleBackToPortfolio}
               className="btn btn-primary"
             >
               {t("portfolio.backToProjects") || "Volver a proyectos"}
