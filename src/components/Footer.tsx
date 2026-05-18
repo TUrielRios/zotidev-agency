@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Instagram, ArrowUpRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
@@ -107,11 +108,23 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm opacity-70 mb-4 md:mb-0">
+          <p className="text-sm opacity-70 mb-4 md:mb-0 order-3 md:order-1 mt-4 md:mt-0">
             &copy; {new Date().getFullYear()} Zotidev. {t('footer.rights')}
           </p>
+
+          <div className="flex flex-wrap justify-center gap-4 text-sm opacity-70 mb-4 md:mb-0 order-2 md:order-2">
+            <Link to="/privacy-policy" className="hover:opacity-100 hover:text-primary transition-colors">
+              {t('footer.legal.privacy')}
+            </Link>
+            <Link to="/terms-of-use" className="hover:opacity-100 hover:text-primary transition-colors">
+              {t('footer.legal.terms')}
+            </Link>
+            <Link to="/cookie-policy" className="hover:opacity-100 hover:text-primary transition-colors">
+              {t('footer.legal.cookies')}
+            </Link>
+          </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 order-1 md:order-3">
             <a 
               href="#hero" 
               className="p-2 rounded-full bg-secondary hover:bg-primary hover:text-white transition-colors"

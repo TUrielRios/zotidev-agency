@@ -10,6 +10,9 @@ import Technologies from "./components/sections/Technologies"
 import Process from "./components/sections/Process"
 import Footer from "./components/Footer"
 import ProjectDetail from "./components/ProjectDetail"
+import PrivacyPolicy from "./pages/PrivacyPolicy"
+import TermsOfUse from "./pages/TermsOfUse"
+import CookiePolicy from "./pages/CookiePolicy"
 import { ThemeProvider } from "./context/ThemeContext"
 import { LanguageProvider } from "./context/LanguageContext"
 
@@ -45,6 +48,11 @@ function App() {
                     </main>
                   }
                 />
+
+                {/* Páginas Legales */}
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-use" element={<TermsOfUse />} />
+                <Route path="/cookie-policy" element={<CookiePolicy />} />
 
                 {/* Página individual para cada proyecto */}
                 <Route path="/:projectId" element={<ProjectDetail />} />
